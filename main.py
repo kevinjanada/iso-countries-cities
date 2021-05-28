@@ -21,21 +21,21 @@ CREATE TABLE cities (
     code char(3),
     region_code char(4),
     country_code char(2),
-    name varchar(255),
+    name varchar(255)
 );
 '''
 
 DB_HOST = "localhost"
-DB_NAME = "iso-countries"
+DB_NAME = "debio_escrow"
 DB_USER = "kevin"
 DB_PASSWORD = ""
 
 def connect_to_db():
     conn = psycopg2.connect(
-            host=DB_HOST,
+            #host=DB_HOST,
             database=DB_NAME,
             user=DB_USER,
-            password=DB_PASSWORD
+            #password=DB_PASSWORD
             )
     return conn
 
@@ -132,16 +132,12 @@ if __name__ == '__main__':
     # Connect to DB
     conn = connect_to_db()
 
-    # Load countries
-    #countries = load_countries()
-    #insert countries
-    #insert_countries(conn, countries)
+    countries = load_countries()
+    insert_countries(conn, countries)
 
-    # Load regions
-    #regions = load_regions()
-    #insert_regions(conn, regions)
+    regions = load_regions()
+    insert_regions(conn, regions)
 
-    '''
     cities_part1 = load_cities(CITY_PART1)
     cities_part2 = load_cities(CITY_PART2)
     cities_part3 = load_cities(CITY_PART3)
@@ -149,6 +145,5 @@ if __name__ == '__main__':
     insert_cities(conn, cities_part1)
     insert_cities(conn, cities_part2)
     insert_cities(conn, cities_part3)
-    '''
 
     conn.close()
