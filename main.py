@@ -72,7 +72,7 @@ def load_regions() -> tuple:
             region_code = div.partition("-")[2]
             region_name = divisions[div]
             region_list.append((region_code, country_code, region_name))
-            longest = longest if longest > len(region_code) else len(region_code)
+            #longest = longest if longest > len(region_code) else len(region_code)
     return region_list
 
 
